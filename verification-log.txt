@@ -1,0 +1,49 @@
+PASS breadboard: no banned elements or attributes             
+PASS breadboard: stroke-width and fill declared everywhere    
+PASS breadboard: real units and matching viewBox aspect       48mm x 46mm, viewBox 0 0 4800 4600
+PASS schematic: no banned elements or attributes              
+PASS schematic: stroke-width and fill declared everywhere     
+PASS schematic: real units and matching viewBox aspect        2.4in x 3.2in, viewBox 0 0 2400 3200
+PASS pcb: no banned elements or attributes                    
+PASS pcb: stroke-width and fill declared everywhere           
+PASS pcb: real units and matching viewBox aspect              48mm x 46mm, viewBox 0 0 4800 4600
+PASS icon: no banned elements or attributes                   
+PASS icon: stroke-width and fill declared everywhere          
+PASS icon: real units and matching viewBox aspect             0.32in x 0.32in, viewBox 0 0 320 320
+PASS breadboard: layer group ids                              ['breadboard']
+PASS schematic: layer group ids                               ['schematic']
+PASS pcb: layer group ids                                     ['silkscreen', 'copper1', 'copper0']
+PASS icon: layer group ids                                    ['icon']
+PASS pcb: copper0 nested inside copper1                       
+PASS breadboard: 44 connector pins, each exactly once         found 44
+PASS schematic: 44 connector pins, each exactly once          found 44
+PASS pcb: 44 connector pins, each exactly once                found 44
+PASS schematic: 44 terminals, contiguous                      found 44
+PASS fzp: connector ids contiguous from 0                     count 44
+PASS fzp: every connector typed female                        
+PASS fzp: svgIds agree with connector ids                     []
+PASS fzp: names match the spec                                
+PASS fzp: every connector description carries its header and pin number 
+PASS fzp: moduleId is reverse DNS and not Arduino's           com.greenshoegarage.arduino.giga-display-shield-tht-v0
+PASS pcb: every pad on a 2.5400 mm grid inside its header block 2 blocks, 44 pads checked
+PASS pcb: drill 1.000 mm on a 1.800 mm pad                    drill 1.000, pad 1.800, ring 0.400
+PASS pcb: silkscreen outline measures the board size          48.00 x 46.00 mm
+PASS pcb: every pad inside the outline                        
+PASS pcb: a silkscreen position 1 marker for every header     2 markers, 2 headers
+PASS pcb: no silkscreen geometry lands on a pad               []
+PASS breadboard: no label geometry sits on a pad              []
+PASS breadboard: all pads inside the board outline            44 pads
+PASS schematic: every pin on the 0.1 in grid                  []
+PASS schematic: every pin line exactly 0.1 in long            []
+PASS schematic: every terminal at the free tip of its pin     []
+INFO schematic: measured grid step                            100.0 user units per 0.1 in
+PASS fzpz: archive holds exactly the five expected members    5 members
+PASS style: no em dashes in any generated file                []
+INFO NOT RUN: Fritzing loads the part with no console warnings needs Fritzing, a Gerber viewer, or the design file
+INFO NOT RUN: hover highlight follows one net across all three views needs Fritzing, a Gerber viewer, or the design file
+INFO NOT RUN: Gerber export measured in a Gerber viewer       needs Fritzing, a Gerber viewer, or the design file
+INFO NOT RUN: footprint diffed against Arduino's own published part needs Fritzing, a Gerber viewer, or the design file
+INFO NOT RUN: mounting hole positions                         needs Fritzing, a Gerber viewer, or the design file
+INFO NOT RUN: shield mates with a physical board              needs Fritzing, a Gerber viewer, or the design file
+
+40 passed, 0 failed

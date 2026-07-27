@@ -393,3 +393,158 @@ UNOQ = dict(
 )
 
 BOARDS = [GIGA, R4, UNOQ]
+
+
+# ===========================================================================
+# Arduino GIGA Display Shield (ASX00039)
+#
+# This board is not like the other four. Its datasheet has no pinout section at
+# all: it names connectors by reference designator (J3 camera, J4 display,
+# J5 touch, J6 and J7 "2.54 mm Header GIGA Connector") and gives no pin counts,
+# no signal names, no positions and no outline dimensions in text.
+#
+# Everything below was recovered from the netlist annotations in the published
+# schematic PDF (ASX00039-schematics.pdf, revision V0.5, 17/10/2024), sheet 2
+# of 8, "GIGA HEADERS". Pin designators of the form PIJ60nn / PIJ70nn are paired
+# with net labels of the form NLxxx in that file, which is what fixes each pin.
+#
+# Pins whose net could not be resolved unambiguously are named by designator
+# rather than guessed. They are the power and ground pins.
+# ===========================================================================
+DS_PITCH = 2.54
+J6_X, J7_X = 14.0, 30.0     # nominal, see notes
+J_Y = 9.0
+
+
+def display_pins():
+    unresolved = ("Power or ground net. The published schematic groups this pin "
+                  "with other supply pins but does not label the group, so it is "
+                  "NOT resolved. Meter it against the board before connecting "
+                  "anything to it.")
+    dsi = ("MIPI DSI %s from the GIGA R1 WiFi, routed on the shield to the "
+           "KD040WVFID026 display through J4. Differential pair, treat as such "
+           "if you carry it anywhere.")
+    j6 = {1: ("DSI_D1_N", "Digital", dsi % "data lane 1 negative"),
+          2: ("DSI_D1_P", "Digital", dsi % "data lane 1 positive"),
+          5: ("DSI_CK_N", "Digital", dsi % "clock negative"),
+          6: ("DSI_CK_P", "Digital", dsi % "clock positive"),
+          9: ("DSI_D0_N", "Digital", dsi % "data lane 0 negative"),
+          10: ("DSI_D0_P", "Digital", dsi % "data lane 0 positive"),
+          13: ("PC6", "Digital", "STM32H747 port PC6, in the GPIOS group on the schematic. 3.3 V."),
+          14: ("PI0", "Digital", "STM32H747 port PI0, in the GPIOS group on the schematic. 3.3 V."),
+          15: ("PI1", "Digital", "STM32H747 port PI1, in the GPIOS group on the schematic. 3.3 V."),
+          16: ("PI2", "Digital", "STM32H747 port PI2, in the GPIOS group on the schematic. 3.3 V."),
+          17: ("PI3", "Digital", "STM32H747 port PI3, in the GPIOS group on the schematic. 3.3 V."),
+          18: ("PC1", "Digital", "STM32H747 port PC1, one of the two DFSDM1 lines that carry the MP34DT06 PDM microphone (clock or data, not resolved). 3.3 V."),
+          19: ("PB12", "Digital", "STM32H747 port PB12, in the GPIOS group on the schematic. 3.3 V."),
+          20: ("PD3", "Digital", "STM32H747 port PD3, one of the two DFSDM1 lines that carry the MP34DT06 PDM microphone (clock or data, not resolved). 3.3 V.")}
+    j7 = {3: ("PB6", "Digital", "STM32H747 port PB6, on the I2C4 bus. The schematic notes that on the GIGA the camera shares I2C4 with JDIGITAL. SDA or SCL, not resolved. 3.3 V."),
+          4: ("PH12", "Digital", "STM32H747 port PH12, on the I2C4 bus. SDA or SCL, not resolved. 3.3 V."),
+          5: ("PI5", "Digital", "STM32H747 port PI5, one line of the parallel camera bus. 3.3 V."),
+          6: ("PH8", "Digital", "STM32H747 port PH8, one line of the parallel camera bus. 3.3 V."),
+          7: ("PA6", "Digital", "STM32H747 port PA6, one line of the parallel camera bus. 3.3 V."),
+          8: ("PJ9", "Digital", "STM32H747 port PJ9, one line of the parallel camera bus. 3.3 V."),
+          9: ("PI7", "Digital", "STM32H747 port PI7, one line of the parallel camera bus. 3.3 V."),
+          10: ("PI6", "Digital", "STM32H747 port PI6, one line of the parallel camera bus. 3.3 V."),
+          11: ("PI4", "Digital", "STM32H747 port PI4, one line of the parallel camera bus. 3.3 V."),
+          12: ("PH14", "Digital", "STM32H747 port PH14, one line of the parallel camera bus. 3.3 V."),
+          13: ("PG11", "Digital", "STM32H747 port PG11, one line of the parallel camera bus. 3.3 V."),
+          14: ("PH11", "Digital", "STM32H747 port PH11, one line of the parallel camera bus. 3.3 V."),
+          15: ("PH10", "Digital", "STM32H747 port PH10, one line of the parallel camera bus. 3.3 V."),
+          16: ("PH9", "Digital", "STM32H747 port PH9, one line of the parallel camera bus. 3.3 V."),
+          17: ("PA1", "Digital", "STM32H747 port PA1, a camera control line (POWER_EN or PWDN, not resolved). The schematic shows this net on J7 pins 17 and 19. 3.3 V."),
+          18: ("PD4", "Digital", "STM32H747 port PD4, a camera control line (POWER_EN or PWDN, not resolved). The schematic shows this net on J7 pins 18 and 20. 3.3 V."),
+          19: ("PA1", "Digital", "STM32H747 port PA1 again. The schematic shows the same net on J7 pins 17 and 19. 3.3 V."),
+          20: ("PD4", "Digital", "STM32H747 port PD4 again. The schematic shows the same net on J7 pins 18 and 20. 3.3 V.")}
+    out = []
+    for (tagname, table, count, x0, group) in (("J6", j6, 24, J6_X, "j6"),
+                                               ("J7", j7, 20, J7_X, "j7")):
+        for n in range(1, count + 1):
+            col_left = (n % 2 == 1)
+            x = x0 if col_left else x0 + DS_PITCH
+            y = J_Y + ((n - 1) // 2) * DS_PITCH
+            if n in table:
+                nm, ty, de = table[n]
+                short = nm.replace("DSI_", "")
+            else:
+                nm, ty, de = "%s-%d" % (tagname, n), "Power", unresolved
+                short = "%d" % n
+            e = P(nm, ty, de, x, y, "right", "L" if group == "j6" else "R",
+                  group, short)
+            e["lside"] = "L" if col_left else "R"
+            out.append(e)
+    return out
+
+
+DISPLAY = dict(
+    slug="arduino_giga_display_shield",
+    title="Arduino GIGA Display Shield",
+    label="GIGA DISP",
+    sku="ASX00039",
+    version="0.9.0",
+    module_id="com.greenshoegarage.arduino.giga-display-shield-tht-v0",
+    board=(48.0, 46.0),
+    nominal=True,
+    connector_type="female",
+    family="shield (arduino)",
+    processor="none, the shield has no microcontroller",
+    voltage="3.3V",
+    url="https://store.arduino.cc/products/giga-display-shield",
+    datasheet="ASX00039 product reference manual, page footer Modified 17/07/2026, "
+              "plus ASX00039-schematics.pdf revision V0.5 dated 17/10/2024, which "
+              "is where every pin identity below comes from",
+    tags=["arduino", "GIGA", "display shield", "touchscreen", "BMI270", "shield",
+          "ASX00039"],
+    description=(
+        "Arduino GIGA Display Shield (SKU ASX00039). A 3.97 inch 480x800 "
+        "capacitive touch TFT with a BMI270 6 axis IMU, an MP34DT06 PDM "
+        "microphone, an RGB LED and a 20 pin Arducam connector, for the GIGA R1 "
+        "WiFi. It has no microcontroller and cannot be programmed on its own. It "
+        "mates with the two 2.54 mm headers in the middle of the GIGA R1 WiFi, "
+        "not with the shield rows, so the 54 pins on the outer headers stay "
+        "free. IMPORTANT: this part is v0.9.0, not v1.0.0, because the shield's "
+        "own datasheet contains no pinout table and no readable mechanical "
+        "dimensions. Pin identities were recovered from the published schematic "
+        "netlist. The supply and ground pins could not be resolved and are named "
+        "by designator (J6-3 and so on). Connector positions and the board "
+        "outline are nominal and are NOT dimensioned. Use this for schematic "
+        "capture and illustration, not for ordering a carrier board."),
+    key_warnings=[
+        "This part is v0.9.0. It does not meet the standard of the other four "
+        "parts in this set, for the reasons in the description and below.",
+        "The shield needs a GIGA R1 WiFi. It has no microcontroller of its own.",
+        "Eight of the 44 pins are supply or ground pins whose net could not be "
+        "resolved from the published schematic. They are named by designator, "
+        "not guessed. Meter them before connecting anything.",
+        "Connector positions and the board outline in PCB view are nominal. Do "
+        "not order a board against this footprint.",
+        "Logic is 3.3 V. The VIN header input range is 6 V to 32 V.",
+    ],
+    art=dict(usb=None, module_x=None, matrix=None, jack=False, screen=True),
+    pins=display_pins(),
+    headers=[("J6", 24, "schematic sheet 2, GIGA HEADERS"),
+             ("J7", 20, "schematic sheet 2, GIGA HEADERS")],
+    group_header={"j6": 0, "j7": 1},
+    deferred=[
+        "J3, the 20 pin 2.54 mm Arducam camera header (pin map is in the "
+        "schematic, but its board position is not)",
+        "J4 display video and J5 touch flex connectors, which are internal to "
+        "the shield and not user wiring points",
+        "the two alignment posts on J6 and J7",
+    ],
+    errata=[
+        "The ASX00039 datasheet has no pinout section. Sections 6.1 and 6.2 name "
+        "the connectors by reference designator only. Every pin identity in this "
+        "part therefore comes from the schematic PDF rather than from the "
+        "datasheet.",
+        "The schematic shows STM32 port PA1 on J7 pins 17 and 19, and port PD4 "
+        "on J7 pins 18 and 20. Both are reproduced as drawn rather than "
+        "corrected.",
+        "The camera bus lines on J7 are identified by STM32 port name. The "
+        "schematic lists the camera signal names (DOUT0 to DOUT7, VSYNC, HREF, "
+        "PCLK, XCLK) as a group without a per pin pairing that survives text "
+        "extraction, so no per pin camera signal name is claimed here.",
+    ],
+)
+
+BOARDS.append(DISPLAY)

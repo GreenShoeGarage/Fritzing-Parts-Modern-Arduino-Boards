@@ -1,17 +1,20 @@
 # Arduino Fritzing parts
 
-Four installable Fritzing parts, all at v1.0.0, built to one brief and one
-standard: four views each, schematic and PCB held to production quality, part
-assets under CC BY-SA 3.0.
+Five installable Fritzing parts built to one brief and one standard: four views
+each, schematic and PCB held to production quality, part assets under
+CC BY-SA 3.0. Four of the five are at v1.0.0. The GIGA Display Shield is at
+v0.9.0 because its published documentation does not support the same standard,
+which is explained in its section below.
 
-| Part | SKU | Connectors | Outline | Header logic |
-|---|---|---|---|---|
-| [Arduino MKR WiFi 1010](#arduino-mkr-wifi-1010-abx00023) | ABX00023 | 28 | 61.5 by 25.0 mm | 3.3V |
-| [Arduino GIGA R1 WiFi](#arduino-giga-r1-wifi-abx00063) | ABX00063 | 86 | 101.68 by 53.34 mm | 3.3V |
-| [Arduino UNO R4 WiFi](#arduino-uno-r4-wifi-abx00087) | ABX00087 | 32 | 68.58 by 53.34 mm | 5V |
-| [Arduino UNO Q](#arduino-uno-q-abx00162--abx00173) | ABX00162 / ABX00173 | 32 | 68.58 by 53.34 mm | 3.3V |
+| Part | SKU | Version | Connectors | Outline | Header logic |
+|---|---|---|---|---|---|
+| [Arduino MKR WiFi 1010](#arduino-mkr-wifi-1010-abx00023) | ABX00023 | v1.0.0 | 28 | 61.5 by 25.0 mm | 3.3V |
+| [Arduino GIGA R1 WiFi](#arduino-giga-r1-wifi-abx00063) | ABX00063 | v1.0.0 | 86 | 101.68 by 53.34 mm | 3.3V |
+| [Arduino UNO R4 WiFi](#arduino-uno-r4-wifi-abx00087) | ABX00087 | v1.0.0 | 32 | 68.58 by 53.34 mm | 5V |
+| [Arduino UNO Q](#arduino-uno-q-abx00162--abx00173) | ABX00162 / ABX00173 | v1.0.0 | 32 | 68.58 by 53.34 mm | 3.3V |
+| [Arduino GIGA Display Shield](#arduino-giga-display-shield-asx00039) | ASX00039 | v0.9.0 | 44 | 48.0 by 46.0 mm | 3.3V |
 
-177 automated checks across the four parts, 0 failing. Each part folder holds
+217 automated checks across the five parts, 0 failing. Each part folder holds
 the `.fzpz` you install, a flat `src/` tree so the part stays diffable in git, a
 NOTES.md engineering record, the verification log, and PNG previews of all four
 views. This file is the merged README for the whole set.
@@ -42,7 +45,7 @@ Rebuild the three shield format parts with `python3 tools/make.py` from the set
 root. The MKR WiFi 1010 predates that generator and keeps its own, so rebuild it
 with `python3 tools/build.py` from inside `arduino_mkr_wifi_1010/`.
 
-## What the four parts share
+## What the parts share
 
 - 2.54 mm pitch, 1.0 mm drill on a 1.8 mm pad, drawn as a circle with
   `fill="none"` and a 0.4 mm stroke so the drill is the inner clear area.
@@ -101,7 +104,7 @@ contents, and prose style rules.
 
 ## Arduino MKR WiFi 1010 (ABX00023)
 
-`arduino_mkr_wifi_1010/arduino_mkr_wifi_1010.fzpz` &middot; 28 connectors &middot; 61.5 by 25.0 mm &middot; header logic 3.3V &middot; 57 checks pass, 0 fail
+`arduino_mkr_wifi_1010/arduino_mkr_wifi_1010.fzpz` &middot; v1.0.0 &middot; 28 connectors &middot; 61.5 by 25.0 mm &middot; header logic 3.3V &middot; 57 checks pass, 0 fail
 
 1. 3.3 V I/O and NOT 5 V tolerant. A 5 V signal on any pin will damage the board.
 2. The +5V pin (header pin 28) is not a regulated output. It is jumper connected to the USB power input, so it only carries voltage when the board is USB powered.
@@ -178,7 +181,7 @@ Pads are 1.0 mm drill on a 1.8 mm pad throughout the set.
 
 ## Arduino GIGA R1 WiFi (ABX00063)
 
-`arduino_giga_r1_wifi/arduino_giga_r1_wifi.fzpz` &middot; 86 connectors &middot; 101.68 by 53.34 mm &middot; header logic 3.3V &middot; 40 checks pass, 0 fail
+`arduino_giga_r1_wifi/arduino_giga_r1_wifi.fzpz` &middot; v1.0.0 &middot; 86 connectors &middot; 101.68 by 53.34 mm &middot; header logic 3.3V &middot; 40 checks pass, 0 fail
 
 1. 3.3 V logic in a Mega shaped board. A 5 V shield can damage it.
 2. 8 mA maximum per I/O pin.
@@ -311,7 +314,7 @@ Pads are 1.0 mm drill on a 1.8 mm pad throughout the set.
 
 ## Arduino UNO R4 WiFi (ABX00087)
 
-`arduino_uno_r4_wifi/arduino_uno_r4_wifi.fzpz` &middot; 32 connectors &middot; 68.58 by 53.34 mm &middot; header logic 5V &middot; 40 checks pass, 0 fail
+`arduino_uno_r4_wifi/arduino_uno_r4_wifi.fzpz` &middot; v1.0.0 &middot; 32 connectors &middot; 68.58 by 53.34 mm &middot; header logic 5V &middot; 40 checks pass, 0 fail
 
 1. 5 V logic on the headers, unlike most recent Arduino boards.
 2. The ESP32-S3 module is 3.3 V. Keep its pins away from the 5 V domain.
@@ -390,7 +393,7 @@ Pads are 1.0 mm drill on a 1.8 mm pad throughout the set.
 
 ## Arduino UNO Q (ABX00162 / ABX00173)
 
-`arduino_uno_q/arduino_uno_q.fzpz` &middot; 32 connectors &middot; 68.58 by 53.34 mm &middot; header logic 3.3V &middot; 40 checks pass, 0 fail
+`arduino_uno_q/arduino_uno_q.fzpz` &middot; v1.0.0 &middot; 32 connectors &middot; 68.58 by 53.34 mm &middot; header logic 3.3V &middot; 40 checks pass, 0 fail
 
 1. The headers are 3.3 V even though the board takes UNO shields.
 2. D3 (PB0) is 3.6 V tolerant only, in every mode including digital.
@@ -464,6 +467,99 @@ Pads are 1.0 mm drill on a 1.8 mm pad throughout the set.
 | connector31 | JDIGITAL (A2) 18 | D0/RX | Digital | 63.50, 2.54 |
 
 `moduleId` is `com.greenshoegarage.arduino.uno-q-tht-v1`.
+
+
+## Arduino GIGA Display Shield (ASX00039)
+
+`arduino_giga_display_shield/arduino_giga_display_shield.fzpz` &middot; v0.9.0 &middot; 44 connectors &middot; 48.0 by 46.0 mm &middot; header logic 3.3V &middot; 40 checks pass, 0 fail
+
+1. This part is v0.9.0. It does not meet the standard of the other four parts in this set, for the reasons in the description and below.
+2. The shield needs a GIGA R1 WiFi. It has no microcontroller of its own.
+3. Eight of the 44 pins are supply or ground pins whose net could not be resolved from the published schematic. They are named by designator, not guessed. Meter them before connecting anything.
+4. Connector positions and the board outline in PCB view are nominal. Do not order a board against this footprint.
+5. Logic is 3.3 V. The VIN header input range is 6 V to 32 V.
+
+**Built from:** ASX00039 product reference manual, page footer Modified 17/07/2026, plus ASX00039-schematics.pdf revision V0.5 dated 17/10/2024, which is where every pin identity below comes from
+
+**Headers exposed**
+
+| Header | Positions | Source |
+|---|---|---|
+| J6 | 24 | schematic sheet 2, GIGA HEADERS |
+| J7 | 20 | schematic sheet 2, GIGA HEADERS |
+
+**Footprint as drawn**
+
+| Property | Value | Confidence |
+|---|---|---|
+| Pad grid inside J6 and J7 | 2.54 mm | read from the schematic symbols, 2x12 on J6 and 2x10 on J7 |
+| Position of J6 relative to J7 | nominal | **not dimensioned.** No published document gives it |
+| Board outline | nominal 48 by 46 mm canvas | **not dimensioned.** The datasheet mechanical section is a raster figure and states no dimensions in text |
+
+Pads are 1.0 mm drill on a 1.8 mm pad throughout the set.
+
+**Not exposed in v0.9.0**
+
+- J3, the 20 pin 2.54 mm Arducam camera header (pin map is in the schematic, but its board position is not)
+- J4 display video and J5 touch flex connectors, which are internal to the shield and not user wiring points
+- the two alignment posts on J6 and J7
+
+**Datasheet errata noticed while building this**
+
+- The ASX00039 datasheet has no pinout section. Sections 6.1 and 6.2 name the connectors by reference designator only. Every pin identity in this part therefore comes from the schematic PDF rather than from the datasheet.
+- The schematic shows STM32 port PA1 on J7 pins 17 and 19, and port PD4 on J7 pins 18 and 20. Both are reproduced as drawn rather than corrected.
+- The camera bus lines on J7 are identified by STM32 port name. The schematic lists the camera signal names (DOUT0 to DOUT7, VSYNC, HREF, PCLK, XCLK) as a group without a per pin pairing that survives text extraction, so no per pin camera signal name is claimed here.
+
+**Connector map**
+
+| Fritzing | Header pin | Name | Type | Position x, y (mm) |
+|---|---|---|---|---|
+| connector0 | J6 1 | DSI_D1_N | Digital | 14.00, 9.00 |
+| connector1 | J6 2 | DSI_D1_P | Digital | 16.54, 9.00 |
+| connector2 | J6 3 | J6-3 | Power | 14.00, 11.54 |
+| connector3 | J6 4 | J6-4 | Power | 16.54, 11.54 |
+| connector4 | J6 5 | DSI_CK_N | Digital | 14.00, 14.08 |
+| connector5 | J6 6 | DSI_CK_P | Digital | 16.54, 14.08 |
+| connector6 | J6 7 | J6-7 | Power | 14.00, 16.62 |
+| connector7 | J6 8 | J6-8 | Power | 16.54, 16.62 |
+| connector8 | J6 9 | DSI_D0_N | Digital | 14.00, 19.16 |
+| connector9 | J6 10 | DSI_D0_P | Digital | 16.54, 19.16 |
+| connector10 | J6 11 | J6-11 | Power | 14.00, 21.70 |
+| connector11 | J6 12 | J6-12 | Power | 16.54, 21.70 |
+| connector12 | J6 13 | PC6 | Digital | 14.00, 24.24 |
+| connector13 | J6 14 | PI0 | Digital | 16.54, 24.24 |
+| connector14 | J6 15 | PI1 | Digital | 14.00, 26.78 |
+| connector15 | J6 16 | PI2 | Digital | 16.54, 26.78 |
+| connector16 | J6 17 | PI3 | Digital | 14.00, 29.32 |
+| connector17 | J6 18 | PC1 | Digital | 16.54, 29.32 |
+| connector18 | J6 19 | PB12 | Digital | 14.00, 31.86 |
+| connector19 | J6 20 | PD3 | Digital | 16.54, 31.86 |
+| connector20 | J6 21 | J6-21 | Power | 14.00, 34.40 |
+| connector21 | J6 22 | J6-22 | Power | 16.54, 34.40 |
+| connector22 | J6 23 | J6-23 | Power | 14.00, 36.94 |
+| connector23 | J6 24 | J6-24 | Power | 16.54, 36.94 |
+| connector24 | J7 1 | J7-1 | Power | 30.00, 9.00 |
+| connector25 | J7 2 | J7-2 | Power | 32.54, 9.00 |
+| connector26 | J7 3 | PB6 | Digital | 30.00, 11.54 |
+| connector27 | J7 4 | PH12 | Digital | 32.54, 11.54 |
+| connector28 | J7 5 | PI5 | Digital | 30.00, 14.08 |
+| connector29 | J7 6 | PH8 | Digital | 32.54, 14.08 |
+| connector30 | J7 7 | PA6 | Digital | 30.00, 16.62 |
+| connector31 | J7 8 | PJ9 | Digital | 32.54, 16.62 |
+| connector32 | J7 9 | PI7 | Digital | 30.00, 19.16 |
+| connector33 | J7 10 | PI6 | Digital | 32.54, 19.16 |
+| connector34 | J7 11 | PI4 | Digital | 30.00, 21.70 |
+| connector35 | J7 12 | PH14 | Digital | 32.54, 21.70 |
+| connector36 | J7 13 | PG11 | Digital | 30.00, 24.24 |
+| connector37 | J7 14 | PH11 | Digital | 32.54, 24.24 |
+| connector38 | J7 15 | PH10 | Digital | 30.00, 26.78 |
+| connector39 | J7 16 | PH9 | Digital | 32.54, 26.78 |
+| connector40 | J7 17 | PA1 | Digital | 30.00, 29.32 |
+| connector41 | J7 18 | PD4 | Digital | 32.54, 29.32 |
+| connector42 | J7 19 | PA1 | Digital | 30.00, 31.86 |
+| connector43 | J7 20 | PD4 | Digital | 32.54, 31.86 |
+
+`moduleId` is `com.greenshoegarage.arduino.giga-display-shield-tht-v0`.
 
 
 ## Licence
