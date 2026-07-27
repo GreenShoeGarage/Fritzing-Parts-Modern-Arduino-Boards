@@ -12,7 +12,7 @@ which is explained in its section below.
 | [Arduino GIGA R1 WiFi](#arduino-giga-r1-wifi-abx00063) | ABX00063 | v1.0.0 | 86 | 101.68 by 53.34 mm | 3.3V |
 | [Arduino UNO R4 WiFi](#arduino-uno-r4-wifi-abx00087) | ABX00087 | v1.0.0 | 32 | 68.58 by 53.34 mm | 5V |
 | [Arduino UNO Q](#arduino-uno-q-abx00162--abx00173) | ABX00162 / ABX00173 | v1.0.0 | 32 | 68.58 by 53.34 mm | 3.3V |
-| [Arduino GIGA Display Shield](#arduino-giga-display-shield-asx00039) | ASX00039 | v0.9.0 | 44 | 48.0 by 46.0 mm | 3.3V |
+| [Arduino GIGA Display Shield](#arduino-giga-display-shield-asx00039) | ASX00039 | v0.9.1 | 64 | 106.6 by 79.6 mm | 3.3V |
 
 217 automated checks across the five parts, 0 failing. Each part folder holds
 the `.fzpz` you install, a flat `src/` tree so the part stays diffable in git, a
@@ -471,20 +471,22 @@ Pads are 1.0 mm drill on a 1.8 mm pad throughout the set.
 
 ## Arduino GIGA Display Shield (ASX00039)
 
-`arduino_giga_display_shield/arduino_giga_display_shield.fzpz` &middot; v0.9.0 &middot; 44 connectors &middot; 48.0 by 46.0 mm &middot; header logic 3.3V &middot; 40 checks pass, 0 fail
+`arduino_giga_display_shield/arduino_giga_display_shield.fzpz` &middot; v0.9.1 &middot; 64 connectors &middot; 106.6 by 79.6 mm &middot; header logic 3.3V &middot; 40 checks pass, 0 fail
 
-1. This part is v0.9.0. It does not meet the standard of the other four parts in this set, for the reasons in the description and below.
+1. This part is v0.9.1. J3 is solid. J6 and J7 are provisional, for the reasons below.
 2. The shield needs a GIGA R1 WiFi. It has no microcontroller of its own.
-3. Eight of the 44 pins are supply or ground pins whose net could not be resolved from the published schematic. They are named by designator, not guessed. Meter them before connecting anything.
-4. Connector positions and the board outline in PCB view are nominal. Do not order a board against this footprint.
-5. Logic is 3.3 V. The VIN header input range is 6 V to 32 V.
+3. J6 and J7 are on the BACK of the board. They are drawn on the left and right edges as a nominal arrangement, not where they physically sit.
+4. Eight J6 and J7 pins are supply or ground nets that the published schematic does not label. They are named by designator, not guessed. Meter them before connecting anything.
+5. The outline and mounting hole positions are photogrammetric estimates. Do not order a board against this footprint.
+6. Logic is 3.3 V. The VIN header input range is 6 V to 32 V.
 
-**Built from:** ASX00039 product reference manual, page footer Modified 17/07/2026, plus ASX00039-schematics.pdf revision V0.5 dated 17/10/2024, which is where every pin identity below comes from
+**Built from:** ASX00039 product reference manual, page footer Modified 17/07/2026, plus ASX00039-schematics.pdf revision V0.5 dated 17/10/2024, which is where every pin identity comes from
 
 **Headers exposed**
 
 | Header | Positions | Source |
 |---|---|---|
+| J3 | 20 | schematic sheet 5, CAMERA, plus the board silkscreen |
 | J6 | 24 | schematic sheet 2, GIGA HEADERS |
 | J7 | 20 | schematic sheet 2, GIGA HEADERS |
 
@@ -498,66 +500,86 @@ Pads are 1.0 mm drill on a 1.8 mm pad throughout the set.
 
 Pads are 1.0 mm drill on a 1.8 mm pad throughout the set.
 
-**Not exposed in v0.9.0**
+**Not exposed in v0.9.1**
 
-- J3, the 20 pin 2.54 mm Arducam camera header (pin map is in the schematic, but its board position is not)
 - J4 display video and J5 touch flex connectors, which are internal to the shield and not user wiring points
+- J8, the Arducam flat cable connector, which carries the same nets as J3 and cannot be used at the same time
 - the two alignment posts on J6 and J7
 
 **Datasheet errata noticed while building this**
 
-- The ASX00039 datasheet has no pinout section. Sections 6.1 and 6.2 name the connectors by reference designator only. Every pin identity in this part therefore comes from the schematic PDF rather than from the datasheet.
-- The schematic shows STM32 port PA1 on J7 pins 17 and 19, and port PD4 on J7 pins 18 and 20. Both are reproduced as drawn rather than corrected.
-- The camera bus lines on J7 are identified by STM32 port name. The schematic lists the camera signal names (DOUT0 to DOUT7, VSYNC, HREF, PCLK, XCLK) as a group without a per pin pairing that survives text extraction, so no per pin camera signal name is claimed here.
+- The ASX00039 datasheet has no pinout section. Sections 6.1 and 6.2 name the connectors by reference designator only, so every pin identity here comes from the schematic PDF rather than from the datasheet.
+- The schematic wires POWER_EN to J3 pins 1 and 3, PWDN to J3 pins 2 and 4, port PA1 to J7 pins 17 and 19, and port PD4 to J7 pins 18 and 20. All four doubled nets are reproduced as drawn rather than corrected.
+- Connector ids changed between v0.9.0 and v0.9.1 of this part because J3 was added ahead of J6 and J7. Rewire anything built against v0.9.0.
 
 **Connector map**
 
 | Fritzing | Header pin | Name | Type | Position x, y (mm) |
 |---|---|---|---|---|
-| connector0 | J6 1 | DSI_D1_N | Digital | 14.00, 9.00 |
-| connector1 | J6 2 | DSI_D1_P | Digital | 16.54, 9.00 |
-| connector2 | J6 3 | J6-3 | Power | 14.00, 11.54 |
-| connector3 | J6 4 | J6-4 | Power | 16.54, 11.54 |
-| connector4 | J6 5 | DSI_CK_N | Digital | 14.00, 14.08 |
-| connector5 | J6 6 | DSI_CK_P | Digital | 16.54, 14.08 |
-| connector6 | J6 7 | J6-7 | Power | 14.00, 16.62 |
-| connector7 | J6 8 | J6-8 | Power | 16.54, 16.62 |
-| connector8 | J6 9 | DSI_D0_N | Digital | 14.00, 19.16 |
-| connector9 | J6 10 | DSI_D0_P | Digital | 16.54, 19.16 |
-| connector10 | J6 11 | J6-11 | Power | 14.00, 21.70 |
-| connector11 | J6 12 | J6-12 | Power | 16.54, 21.70 |
-| connector12 | J6 13 | PC6 | Digital | 14.00, 24.24 |
-| connector13 | J6 14 | PI0 | Digital | 16.54, 24.24 |
-| connector14 | J6 15 | PI1 | Digital | 14.00, 26.78 |
-| connector15 | J6 16 | PI2 | Digital | 16.54, 26.78 |
-| connector16 | J6 17 | PI3 | Digital | 14.00, 29.32 |
-| connector17 | J6 18 | PC1 | Digital | 16.54, 29.32 |
-| connector18 | J6 19 | PB12 | Digital | 14.00, 31.86 |
-| connector19 | J6 20 | PD3 | Digital | 16.54, 31.86 |
-| connector20 | J6 21 | J6-21 | Power | 14.00, 34.40 |
-| connector21 | J6 22 | J6-22 | Power | 16.54, 34.40 |
-| connector22 | J6 23 | J6-23 | Power | 14.00, 36.94 |
-| connector23 | J6 24 | J6-24 | Power | 16.54, 36.94 |
-| connector24 | J7 1 | J7-1 | Power | 30.00, 9.00 |
-| connector25 | J7 2 | J7-2 | Power | 32.54, 9.00 |
-| connector26 | J7 3 | PB6 | Digital | 30.00, 11.54 |
-| connector27 | J7 4 | PH12 | Digital | 32.54, 11.54 |
-| connector28 | J7 5 | PI5 | Digital | 30.00, 14.08 |
-| connector29 | J7 6 | PH8 | Digital | 32.54, 14.08 |
-| connector30 | J7 7 | PA6 | Digital | 30.00, 16.62 |
-| connector31 | J7 8 | PJ9 | Digital | 32.54, 16.62 |
-| connector32 | J7 9 | PI7 | Digital | 30.00, 19.16 |
-| connector33 | J7 10 | PI6 | Digital | 32.54, 19.16 |
-| connector34 | J7 11 | PI4 | Digital | 30.00, 21.70 |
-| connector35 | J7 12 | PH14 | Digital | 32.54, 21.70 |
-| connector36 | J7 13 | PG11 | Digital | 30.00, 24.24 |
-| connector37 | J7 14 | PH11 | Digital | 32.54, 24.24 |
-| connector38 | J7 15 | PH10 | Digital | 30.00, 26.78 |
-| connector39 | J7 16 | PH9 | Digital | 32.54, 26.78 |
-| connector40 | J7 17 | PA1 | Digital | 30.00, 29.32 |
-| connector41 | J7 18 | PD4 | Digital | 32.54, 29.32 |
-| connector42 | J7 19 | PA1 | Digital | 30.00, 31.86 |
-| connector43 | J7 20 | PD4 | Digital | 32.54, 31.86 |
+| connector0 | J3 1 | POWER_EN | Digital | 41.00, 5.40 |
+| connector1 | J3 2 | PWDN | Digital | 41.00, 7.94 |
+| connector2 | J3 3 | POWER_EN | Digital | 43.54, 5.40 |
+| connector3 | J3 4 | PWDN | Digital | 43.54, 7.94 |
+| connector4 | J3 5 | DOUT1 | Digital | 46.08, 5.40 |
+| connector5 | J3 6 | DOUT0 | Digital | 46.08, 7.94 |
+| connector6 | J3 7 | DOUT3 | Digital | 48.62, 5.40 |
+| connector7 | J3 8 | DOUT2 | Digital | 48.62, 7.94 |
+| connector8 | J3 9 | DOUT5 | Digital | 51.16, 5.40 |
+| connector9 | J3 10 | DOUT4 | Digital | 51.16, 7.94 |
+| connector10 | J3 11 | DOUT7 | Digital | 53.70, 5.40 |
+| connector11 | J3 12 | DOUT6 | Digital | 53.70, 7.94 |
+| connector12 | J3 13 | PCLK | Digital | 56.24, 5.40 |
+| connector13 | J3 14 | XCLK | Digital | 56.24, 7.94 |
+| connector14 | J3 15 | VSYNC | Digital | 58.78, 5.40 |
+| connector15 | J3 16 | HREF | Digital | 58.78, 7.94 |
+| connector16 | J3 17 | SCL | Digital | 61.32, 5.40 |
+| connector17 | J3 18 | SDA | Digital | 61.32, 7.94 |
+| connector18 | J3 19 | +3V3 | Power | 63.86, 5.40 |
+| connector19 | J3 20 | GND | Power | 63.86, 7.94 |
+| connector20 | J6 1 | DSI_D1_N | Digital | 2.20, 25.00 |
+| connector21 | J6 2 | DSI_D1_P | Digital | 4.74, 25.00 |
+| connector22 | J6 3 | J6-3 | Power | 2.20, 27.54 |
+| connector23 | J6 4 | J6-4 | Power | 4.74, 27.54 |
+| connector24 | J6 5 | DSI_CK_N | Digital | 2.20, 30.08 |
+| connector25 | J6 6 | DSI_CK_P | Digital | 4.74, 30.08 |
+| connector26 | J6 7 | J6-7 | Power | 2.20, 32.62 |
+| connector27 | J6 8 | J6-8 | Power | 4.74, 32.62 |
+| connector28 | J6 9 | DSI_D0_N | Digital | 2.20, 35.16 |
+| connector29 | J6 10 | DSI_D0_P | Digital | 4.74, 35.16 |
+| connector30 | J6 11 | J6-11 | Power | 2.20, 37.70 |
+| connector31 | J6 12 | J6-12 | Power | 4.74, 37.70 |
+| connector32 | J6 13 | PC6 | Digital | 2.20, 40.24 |
+| connector33 | J6 14 | PI0 | Digital | 4.74, 40.24 |
+| connector34 | J6 15 | PI1 | Digital | 2.20, 42.78 |
+| connector35 | J6 16 | PI2 | Digital | 4.74, 42.78 |
+| connector36 | J6 17 | PI3 | Digital | 2.20, 45.32 |
+| connector37 | J6 18 | PC1 | Digital | 4.74, 45.32 |
+| connector38 | J6 19 | PB12 | Digital | 2.20, 47.86 |
+| connector39 | J6 20 | PD3 | Digital | 4.74, 47.86 |
+| connector40 | J6 21 | J6-21 | Power | 2.20, 50.40 |
+| connector41 | J6 22 | J6-22 | Power | 4.74, 50.40 |
+| connector42 | J6 23 | J6-23 | Power | 2.20, 52.94 |
+| connector43 | J6 24 | J6-24 | Power | 4.74, 52.94 |
+| connector44 | J7 1 | J7-1 | Power | 100.40, 27.00 |
+| connector45 | J7 2 | J7-2 | Power | 102.94, 27.00 |
+| connector46 | J7 3 | PB6 | Digital | 100.40, 29.54 |
+| connector47 | J7 4 | PH12 | Digital | 102.94, 29.54 |
+| connector48 | J7 5 | PI5 | Digital | 100.40, 32.08 |
+| connector49 | J7 6 | PH8 | Digital | 102.94, 32.08 |
+| connector50 | J7 7 | PA6 | Digital | 100.40, 34.62 |
+| connector51 | J7 8 | PJ9 | Digital | 102.94, 34.62 |
+| connector52 | J7 9 | PI7 | Digital | 100.40, 37.16 |
+| connector53 | J7 10 | PI6 | Digital | 102.94, 37.16 |
+| connector54 | J7 11 | PI4 | Digital | 100.40, 39.70 |
+| connector55 | J7 12 | PH14 | Digital | 102.94, 39.70 |
+| connector56 | J7 13 | PG11 | Digital | 100.40, 42.24 |
+| connector57 | J7 14 | PH11 | Digital | 102.94, 42.24 |
+| connector58 | J7 15 | PH10 | Digital | 100.40, 44.78 |
+| connector59 | J7 16 | PH9 | Digital | 102.94, 44.78 |
+| connector60 | J7 17 | PA1 | Digital | 100.40, 47.32 |
+| connector61 | J7 18 | PD4 | Digital | 102.94, 47.32 |
+| connector62 | J7 19 | PA1 | Digital | 100.40, 49.86 |
+| connector63 | J7 20 | PD4 | Digital | 102.94, 49.86 |
 
 `moduleId` is `com.greenshoegarage.arduino.giga-display-shield-tht-v0`.
 
