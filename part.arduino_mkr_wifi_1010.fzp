@@ -1,0 +1,479 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<module referenceFile="part.arduino_mkr_wifi_1010.fzp" moduleId="com.greenshoegarage.arduino.mkr-wifi-1010-tht-v1" fritzingVersion="1.0.2">
+  <version>1.0.0</version>
+  <author>Built for Green Shoe Garage</author>
+  <title>Arduino MKR WiFi 1010</title>
+  <label>MKR</label>
+  <date>2026-07-27</date>
+  <url>https://store.arduino.cc/products/arduino-mkr-wifi-1010</url>
+  <description>Arduino MKR WiFi 1010 (SKU ABX00023), a MKR form factor board built around a Microchip SAMD21G18A Arm Cortex-M0+ at 48 MHz, a u-blox NINA-W102 radio (WiFi, Bluetooth and BLE) and a Microchip ATECC508A secure element. Two facts bite people who wire this board up from memory. First, the I/O is 3.3 V and is NOT 5 V tolerant, so driving any pin from a 5 V signal will damage the board. Second, the +5V pin (header pin 28) is not a regulated output: it is jumper connected to the USB power input, so it only carries voltage when the board is USB powered. Header pin numbering runs 1 to 14 along the analog row starting at the USB end, then 15 to 28 along the digital and power row running from the far end back toward the USB end, so header pin 28 (+5V) sits opposite header pin 1 (AREF). Part version 1.0.0.</description>
+  <tags>
+    <tag>arduino</tag>
+    <tag>MKR</tag>
+    <tag>SAMD21</tag>
+    <tag>WiFi</tag>
+    <tag>Bluetooth</tag>
+    <tag>BLE</tag>
+    <tag>IoT</tag>
+    <tag>NINA-W102</tag>
+    <tag>ATECC508A</tag>
+    <tag>ABX00023</tag>
+  </tags>
+  <properties>
+    <property name="family">microcontroller board (arduino)</property>
+    <property name="type">Arduino MKR WiFi 1010</property>
+    <property name="variant">green shoe garage v1.0.0 tht</property>
+    <property name="part number">ABX00023</property>
+    <property name="processor">SAMD21G18A</property>
+    <property name="voltage">3.3V</property>
+    <property name="package">THT</property>
+    <property name="pins">28</property>
+    <property name="layer"></property>
+  </properties>
+  <views>
+    <breadboardView>
+      <layers image="breadboard/arduino_mkr_wifi_1010_breadboard.svg">
+        <layer layerId="breadboard"/>
+      </layers>
+    </breadboardView>
+    <schematicView>
+      <layers image="schematic/arduino_mkr_wifi_1010_schematic.svg">
+        <layer layerId="schematic"/>
+      </layers>
+    </schematicView>
+    <pcbView>
+      <layers image="pcb/arduino_mkr_wifi_1010_pcb.svg">
+        <layer layerId="copper1"/>
+        <layer layerId="copper0"/>
+        <layer layerId="silkscreen"/>
+      </layers>
+    </pcbView>
+    <iconView>
+      <layers image="icon/arduino_mkr_wifi_1010_icon.svg">
+        <layer layerId="icon"/>
+      </layers>
+    </iconView>
+  </views>
+  <connectors>
+    <connector id="connector0" type="male" name="AREF">
+      <description>Header pin 1 (row A). Analog reference input. SAMD21 port PA03. Type per datasheet section 5.2: Analog. 3.3 V logic, not 5 V tolerant.</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector0pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector0pin" terminalId="connector0terminal" layer="schematic"/>
+        </schematicView>
+        <pcbView>
+          <p svgId="connector0pin" layer="copper0"/>
+          <p svgId="connector0pin" layer="copper1"/>
+        </pcbView>
+      </views>
+    </connector>
+    <connector id="connector1" type="male" name="A0/DAC0">
+      <description>Header pin 2 (row A). ADC input, DAC0 output, usable as GPIO. Also addressable as D15. SAMD21 port PA02. Type per datasheet section 5.2: Analog. 3.3 V logic, not 5 V tolerant.</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector1pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector1pin" terminalId="connector1terminal" layer="schematic"/>
+        </schematicView>
+        <pcbView>
+          <p svgId="connector1pin" layer="copper0"/>
+          <p svgId="connector1pin" layer="copper1"/>
+        </pcbView>
+      </views>
+    </connector>
+    <connector id="connector2" type="male" name="A1">
+      <description>Header pin 3 (row A). ADC input, usable as GPIO. Also addressable as D16. SAMD21 port PB02. Type per datasheet section 5.2: Analog. 3.3 V logic, not 5 V tolerant.</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector2pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector2pin" terminalId="connector2terminal" layer="schematic"/>
+        </schematicView>
+        <pcbView>
+          <p svgId="connector2pin" layer="copper0"/>
+          <p svgId="connector2pin" layer="copper1"/>
+        </pcbView>
+      </views>
+    </connector>
+    <connector id="connector3" type="male" name="A2">
+      <description>Header pin 4 (row A). ADC input, usable as GPIO. Also addressable as D17. SAMD21 port PB03. Type per datasheet section 5.2: Analog. 3.3 V logic, not 5 V tolerant.</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector3pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector3pin" terminalId="connector3terminal" layer="schematic"/>
+        </schematicView>
+        <pcbView>
+          <p svgId="connector3pin" layer="copper0"/>
+          <p svgId="connector3pin" layer="copper1"/>
+        </pcbView>
+      </views>
+    </connector>
+    <connector id="connector4" type="male" name="A3">
+      <description>Header pin 5 (row A). ADC input, usable as GPIO, PWM capable. Also addressable as D18. SAMD21 port PA04. Type per datasheet section 5.2: Analog. 3.3 V logic, not 5 V tolerant.</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector4pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector4pin" terminalId="connector4terminal" layer="schematic"/>
+        </schematicView>
+        <pcbView>
+          <p svgId="connector4pin" layer="copper0"/>
+          <p svgId="connector4pin" layer="copper1"/>
+        </pcbView>
+      </views>
+    </connector>
+    <connector id="connector5" type="male" name="A4/SDA">
+      <description>Header pin 6 (row A). ADC input, alternate I2C SDA, usable as GPIO, PWM capable. Also addressable as D19. SAMD21 port PA05. Type per datasheet section 5.2: Analog. 3.3 V logic, not 5 V tolerant.</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector5pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector5pin" terminalId="connector5terminal" layer="schematic"/>
+        </schematicView>
+        <pcbView>
+          <p svgId="connector5pin" layer="copper0"/>
+          <p svgId="connector5pin" layer="copper1"/>
+        </pcbView>
+      </views>
+    </connector>
+    <connector id="connector6" type="male" name="A5/SCL">
+      <description>Header pin 7 (row A). ADC input, alternate I2C SCL, usable as GPIO. Also addressable as D20. SAMD21 port PA06. Type per datasheet section 5.2: Analog. 3.3 V logic, not 5 V tolerant.</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector6pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector6pin" terminalId="connector6terminal" layer="schematic"/>
+        </schematicView>
+        <pcbView>
+          <p svgId="connector6pin" layer="copper0"/>
+          <p svgId="connector6pin" layer="copper1"/>
+        </pcbView>
+      </views>
+    </connector>
+    <connector id="connector7" type="male" name="A6">
+      <description>Header pin 8 (row A). ADC input, usable as GPIO. Also addressable as D21. SAMD21 port PA07. Type per datasheet section 5.2: Analog. 3.3 V logic, not 5 V tolerant.</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector7pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector7pin" terminalId="connector7terminal" layer="schematic"/>
+        </schematicView>
+        <pcbView>
+          <p svgId="connector7pin" layer="copper0"/>
+          <p svgId="connector7pin" layer="copper1"/>
+        </pcbView>
+      </views>
+    </connector>
+    <connector id="connector8" type="male" name="D0">
+      <description>Header pin 9 (row A). GPIO, PWM capable. SAMD21 port PA22. Type per datasheet section 5.2: Digital. 3.3 V logic, not 5 V tolerant.</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector8pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector8pin" terminalId="connector8terminal" layer="schematic"/>
+        </schematicView>
+        <pcbView>
+          <p svgId="connector8pin" layer="copper0"/>
+          <p svgId="connector8pin" layer="copper1"/>
+        </pcbView>
+      </views>
+    </connector>
+    <connector id="connector9" type="male" name="D1">
+      <description>Header pin 10 (row A). GPIO, PWM capable. SAMD21 port PA23. Type per datasheet section 5.2: Digital. 3.3 V logic, not 5 V tolerant.</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector9pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector9pin" terminalId="connector9terminal" layer="schematic"/>
+        </schematicView>
+        <pcbView>
+          <p svgId="connector9pin" layer="copper0"/>
+          <p svgId="connector9pin" layer="copper1"/>
+        </pcbView>
+      </views>
+    </connector>
+    <connector id="connector10" type="male" name="D2">
+      <description>Header pin 11 (row A). GPIO, PWM capable. SAMD21 port PA10. Type per datasheet section 5.2: Digital. 3.3 V logic, not 5 V tolerant.</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector10pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector10pin" terminalId="connector10terminal" layer="schematic"/>
+        </schematicView>
+        <pcbView>
+          <p svgId="connector10pin" layer="copper0"/>
+          <p svgId="connector10pin" layer="copper1"/>
+        </pcbView>
+      </views>
+    </connector>
+    <connector id="connector11" type="male" name="D3">
+      <description>Header pin 12 (row A). GPIO, PWM capable. SAMD21 port PA11. Type per datasheet section 5.2: Digital. 3.3 V logic, not 5 V tolerant.</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector11pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector11pin" terminalId="connector11terminal" layer="schematic"/>
+        </schematicView>
+        <pcbView>
+          <p svgId="connector11pin" layer="copper0"/>
+          <p svgId="connector11pin" layer="copper1"/>
+        </pcbView>
+      </views>
+    </connector>
+    <connector id="connector12" type="male" name="D4">
+      <description>Header pin 13 (row A). GPIO, PWM capable. SAMD21 port PB10. Type per datasheet section 5.2: Digital. 3.3 V logic, not 5 V tolerant.</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector12pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector12pin" terminalId="connector12terminal" layer="schematic"/>
+        </schematicView>
+        <pcbView>
+          <p svgId="connector12pin" layer="copper0"/>
+          <p svgId="connector12pin" layer="copper1"/>
+        </pcbView>
+      </views>
+    </connector>
+    <connector id="connector13" type="male" name="D5">
+      <description>Header pin 14 (row A). GPIO, PWM capable. SAMD21 port PB11. Type per datasheet section 5.2: Digital. 3.3 V logic, not 5 V tolerant.</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector13pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector13pin" terminalId="connector13terminal" layer="schematic"/>
+        </schematicView>
+        <pcbView>
+          <p svgId="connector13pin" layer="copper0"/>
+          <p svgId="connector13pin" layer="copper1"/>
+        </pcbView>
+      </views>
+    </connector>
+    <connector id="connector14" type="male" name="D6">
+      <description>Header pin 15 (row B). GPIO, PWM capable. LED_BUILTIN is on this pin. SAMD21 port PA20. Type per datasheet section 5.2: Digital. 3.3 V logic, not 5 V tolerant.</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector14pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector14pin" terminalId="connector14terminal" layer="schematic"/>
+        </schematicView>
+        <pcbView>
+          <p svgId="connector14pin" layer="copper0"/>
+          <p svgId="connector14pin" layer="copper1"/>
+        </pcbView>
+      </views>
+    </connector>
+    <connector id="connector15" type="male" name="D7">
+      <description>Header pin 16 (row B). GPIO, PWM capable. SAMD21 port PA21. Type per datasheet section 5.2: Digital. 3.3 V logic, not 5 V tolerant.</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector15pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector15pin" terminalId="connector15terminal" layer="schematic"/>
+        </schematicView>
+        <pcbView>
+          <p svgId="connector15pin" layer="copper0"/>
+          <p svgId="connector15pin" layer="copper1"/>
+        </pcbView>
+      </views>
+    </connector>
+    <connector id="connector16" type="male" name="D8/MOSI">
+      <description>Header pin 17 (row B). SPI MOSI (COPI), usable as GPIO, PWM capable. SAMD21 port PA16. Type per datasheet section 5.2: Digital. 3.3 V logic, not 5 V tolerant.</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector16pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector16pin" terminalId="connector16terminal" layer="schematic"/>
+        </schematicView>
+        <pcbView>
+          <p svgId="connector16pin" layer="copper0"/>
+          <p svgId="connector16pin" layer="copper1"/>
+        </pcbView>
+      </views>
+    </connector>
+    <connector id="connector17" type="male" name="D9/SCK">
+      <description>Header pin 18 (row B). SPI SCK, usable as GPIO, PWM capable. SAMD21 port PA17. Type per datasheet section 5.2: Digital. 3.3 V logic, not 5 V tolerant.</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector17pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector17pin" terminalId="connector17terminal" layer="schematic"/>
+        </schematicView>
+        <pcbView>
+          <p svgId="connector17pin" layer="copper0"/>
+          <p svgId="connector17pin" layer="copper1"/>
+        </pcbView>
+      </views>
+    </connector>
+    <connector id="connector18" type="male" name="D10/MISO">
+      <description>Header pin 19 (row B). SPI MISO (CIPO), usable as GPIO. SAMD21 port PA19. Type per datasheet section 5.2: Digital. 3.3 V logic, not 5 V tolerant.</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector18pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector18pin" terminalId="connector18terminal" layer="schematic"/>
+        </schematicView>
+        <pcbView>
+          <p svgId="connector18pin" layer="copper0"/>
+          <p svgId="connector18pin" layer="copper1"/>
+        </pcbView>
+      </views>
+    </connector>
+    <connector id="connector19" type="male" name="D11/SDA">
+      <description>Header pin 20 (row B). Primary I2C SDA, usable as GPIO. SAMD21 port PA08. Type per datasheet section 5.2: Digital. 3.3 V logic, not 5 V tolerant.</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector19pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector19pin" terminalId="connector19terminal" layer="schematic"/>
+        </schematicView>
+        <pcbView>
+          <p svgId="connector19pin" layer="copper0"/>
+          <p svgId="connector19pin" layer="copper1"/>
+        </pcbView>
+      </views>
+    </connector>
+    <connector id="connector20" type="male" name="D12/SCL">
+      <description>Header pin 21 (row B). Primary I2C SCL, usable as GPIO. SAMD21 port PA09. Type per datasheet section 5.2: Digital. 3.3 V logic, not 5 V tolerant.</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector20pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector20pin" terminalId="connector20terminal" layer="schematic"/>
+        </schematicView>
+        <pcbView>
+          <p svgId="connector20pin" layer="copper0"/>
+          <p svgId="connector20pin" layer="copper1"/>
+        </pcbView>
+      </views>
+    </connector>
+    <connector id="connector21" type="male" name="D13/RX">
+      <description>Header pin 22 (row B). Serial1 RX, usable as GPIO. SAMD21 port PB23. Type per datasheet section 5.2: Digital. 3.3 V logic, not 5 V tolerant.</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector21pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector21pin" terminalId="connector21terminal" layer="schematic"/>
+        </schematicView>
+        <pcbView>
+          <p svgId="connector21pin" layer="copper0"/>
+          <p svgId="connector21pin" layer="copper1"/>
+        </pcbView>
+      </views>
+    </connector>
+    <connector id="connector22" type="male" name="D14/TX">
+      <description>Header pin 23 (row B). Serial1 TX, usable as GPIO. SAMD21 port PB22. Type per datasheet section 5.2: Digital. 3.3 V logic, not 5 V tolerant.</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector22pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector22pin" terminalId="connector22terminal" layer="schematic"/>
+        </schematicView>
+        <pcbView>
+          <p svgId="connector22pin" layer="copper0"/>
+          <p svgId="connector22pin" layer="copper1"/>
+        </pcbView>
+      </views>
+    </connector>
+    <connector id="connector23" type="male" name="RESETN">
+      <description>Header pin 24 (row B). Active low processor reset input. Type per datasheet section 5.2: Digital. 3.3 V logic, not 5 V tolerant.</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector23pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector23pin" terminalId="connector23terminal" layer="schematic"/>
+        </schematicView>
+        <pcbView>
+          <p svgId="connector23pin" layer="copper0"/>
+          <p svgId="connector23pin" layer="copper1"/>
+        </pcbView>
+      </views>
+    </connector>
+    <connector id="connector24" type="male" name="GND">
+      <description>Header pin 25 (row B). Ground. Type per datasheet section 5.2: Power.</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector24pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector24pin" terminalId="connector24terminal" layer="schematic"/>
+        </schematicView>
+        <pcbView>
+          <p svgId="connector24pin" layer="copper0"/>
+          <p svgId="connector24pin" layer="copper1"/>
+        </pcbView>
+      </views>
+    </connector>
+    <connector id="connector25" type="male" name="+3V3">
+      <description>Header pin 26 (row B). 3.3 V output from the on board regulator. Type per datasheet section 5.2: Power.</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector25pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector25pin" terminalId="connector25terminal" layer="schematic"/>
+        </schematicView>
+        <pcbView>
+          <p svgId="connector25pin" layer="copper0"/>
+          <p svgId="connector25pin" layer="copper1"/>
+        </pcbView>
+      </views>
+    </connector>
+    <connector id="connector26" type="male" name="VIN">
+      <description>Header pin 27 (row B). Regulated power input, 5 V to 6 V maximum. Type per datasheet section 5.2: Power.</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector26pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector26pin" terminalId="connector26terminal" layer="schematic"/>
+        </schematicView>
+        <pcbView>
+          <p svgId="connector26pin" layer="copper0"/>
+          <p svgId="connector26pin" layer="copper1"/>
+        </pcbView>
+      </views>
+    </connector>
+    <connector id="connector27" type="male" name="+5V">
+      <description>Header pin 28 (row B). NOT a regulated supply. Jumper connected to the USB power input. Acts as an output when the board is USB powered. Type per datasheet section 5.2: Power.</description>
+      <views>
+        <breadboardView>
+          <p svgId="connector27pin" layer="breadboard"/>
+        </breadboardView>
+        <schematicView>
+          <p svgId="connector27pin" terminalId="connector27terminal" layer="schematic"/>
+        </schematicView>
+        <pcbView>
+          <p svgId="connector27pin" layer="copper0"/>
+          <p svgId="connector27pin" layer="copper1"/>
+        </pcbView>
+      </views>
+    </connector>
+  </connectors>
+</module>
