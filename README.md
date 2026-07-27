@@ -12,7 +12,7 @@ which is explained in its section below.
 | [Arduino GIGA R1 WiFi](#arduino-giga-r1-wifi-abx00063) | ABX00063 | v1.0.0 | 86 | 101.68 by 53.34 mm | 3.3V |
 | [Arduino UNO R4 WiFi](#arduino-uno-r4-wifi-abx00087) | ABX00087 | v1.0.0 | 32 | 68.58 by 53.34 mm | 5V |
 | [Arduino UNO Q](#arduino-uno-q-abx00162--abx00173) | ABX00162 / ABX00173 | v1.0.0 | 32 | 68.58 by 53.34 mm | 3.3V |
-| [Arduino GIGA Display Shield](#arduino-giga-display-shield-asx00039) | ASX00039 | v0.9.1 | 64 | 106.6 by 79.6 mm | 3.3V |
+| [Arduino GIGA Display Shield](#arduino-giga-display-shield-asx00039) | ASX00039 | v0.9.2 | 64 | 106.6 by 79.6 mm | 3.3V |
 
 217 automated checks across the five parts, 0 failing. Each part folder holds
 the `.fzpz` you install, a flat `src/` tree so the part stays diffable in git, a
@@ -471,7 +471,7 @@ Pads are 1.0 mm drill on a 1.8 mm pad throughout the set.
 
 ## Arduino GIGA Display Shield (ASX00039)
 
-`arduino_giga_display_shield/arduino_giga_display_shield.fzpz` &middot; v0.9.1 &middot; 64 connectors &middot; 106.6 by 79.6 mm &middot; header logic 3.3V &middot; 40 checks pass, 0 fail
+`arduino_giga_display_shield/arduino_giga_display_shield.fzpz` &middot; v0.9.2 &middot; 64 connectors &middot; 106.6 by 79.6 mm &middot; header logic 3.3V &middot; 40 checks pass, 0 fail
 
 1. This part is v0.9.1. J3 is solid. J6 and J7 are provisional, for the reasons below.
 2. The shield needs a GIGA R1 WiFi. It has no microcontroller of its own.
@@ -500,7 +500,7 @@ Pads are 1.0 mm drill on a 1.8 mm pad throughout the set.
 
 Pads are 1.0 mm drill on a 1.8 mm pad throughout the set.
 
-**Not exposed in v0.9.1**
+**Not exposed in v0.9.2**
 
 - J4 display video and J5 touch flex connectors, which are internal to the shield and not user wiring points
 - J8, the Arducam flat cable connector, which carries the same nets as J3 and cannot be used at the same time
@@ -510,7 +510,7 @@ Pads are 1.0 mm drill on a 1.8 mm pad throughout the set.
 
 - The ASX00039 datasheet has no pinout section. Sections 6.1 and 6.2 name the connectors by reference designator only, so every pin identity here comes from the schematic PDF rather than from the datasheet.
 - The schematic wires POWER_EN to J3 pins 1 and 3, PWDN to J3 pins 2 and 4, port PA1 to J7 pins 17 and 19, and port PD4 to J7 pins 18 and 20. All four doubled nets are reproduced as drawn rather than corrected.
-- Connector ids changed between v0.9.0 and v0.9.1 of this part because J3 was added ahead of J6 and J7. Rewire anything built against v0.9.0.
+- Connector ids changed between v0.9.0 and v0.9.1 of this part because J3 was added ahead of J6 and J7. That is a breaking change, so from v0.9.2 the moduleId carries a revision suffix (rev2) and no longer matches v0.9.0. Fritzing refuses to load two parts with the same moduleId, and silently rewiring an existing sketch would have been worse, so the id moves whenever the connector map moves. Cosmetic revisions keep the id.
 
 **Connector map**
 
@@ -581,7 +581,7 @@ Pads are 1.0 mm drill on a 1.8 mm pad throughout the set.
 | connector62 | J7 19 | PA1 | Digital | 100.40, 49.86 |
 | connector63 | J7 20 | PD4 | Digital | 102.94, 49.86 |
 
-`moduleId` is `com.greenshoegarage.arduino.giga-display-shield-tht-v0`.
+`moduleId` is `com.greenshoegarage.arduino.giga-display-shield-tht-rev2`.
 
 
 ## Licence

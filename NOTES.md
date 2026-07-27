@@ -1,4 +1,4 @@
-# NOTES: Arduino GIGA Display Shield Fritzing part, v0.9.1
+# NOTES: Arduino GIGA Display Shield Fritzing part, v0.9.2
 
 Engineering record. Written for whoever has to decide whether to trust this
 footprint.
@@ -109,7 +109,7 @@ Mounting holes are NOT drawn. The UNO Q datasheet mechanical figure lists dimens
 
 - The ASX00039 datasheet has no pinout section. Sections 6.1 and 6.2 name the connectors by reference designator only, so every pin identity here comes from the schematic PDF rather than from the datasheet.
 - The schematic wires POWER_EN to J3 pins 1 and 3, PWDN to J3 pins 2 and 4, port PA1 to J7 pins 17 and 19, and port PD4 to J7 pins 18 and 20. All four doubled nets are reproduced as drawn rather than corrected.
-- Connector ids changed between v0.9.0 and v0.9.1 of this part because J3 was added ahead of J6 and J7. Rewire anything built against v0.9.0.
+- Connector ids changed between v0.9.0 and v0.9.1 of this part because J3 was added ahead of J6 and J7. That is a breaking change, so from v0.9.2 the moduleId carries a revision suffix (rev2) and no longer matches v0.9.0. Fritzing refuses to load two parts with the same moduleId, and silently rewiring an existing sketch would have been worse, so the id moves whenever the connector map moves. Cosmetic revisions keep the id.
 
 ## 5. Judgment calls
 
@@ -170,7 +170,7 @@ PASS fzp: every connector typed as its header specifies       types in use: ['fe
 PASS fzp: svgIds agree with connector ids                     []
 PASS fzp: names match the spec                                
 PASS fzp: every connector description carries its header and pin number 
-PASS fzp: moduleId is reverse DNS and not Arduino's           com.greenshoegarage.arduino.giga-display-shield-tht-v0
+PASS fzp: moduleId is reverse DNS and not Arduino's           com.greenshoegarage.arduino.giga-display-shield-tht-rev2
 PASS pcb: every pad on a 2.5400 mm grid inside its header block 3 blocks, 64 pads checked
 PASS pcb: drill 1.000 mm on a 1.800 mm pad                    drill 1.000, pad 1.800, ring 0.400
 PASS pcb: silkscreen outline measures the board size          106.60 x 79.60 mm
