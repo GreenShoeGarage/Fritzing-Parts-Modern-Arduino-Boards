@@ -1,5 +1,9 @@
 # Arduino Fritzing parts
 
+
+<img width="1052" height="696" alt="Screenshot 2026-07-27 at 8 51 39 PM" src="https://github.com/user-attachments/assets/0b7553db-a2aa-4a87-9254-150f54368bff" />
+
+
 Five installable Fritzing parts built to one brief and one standard: four views
 each, schematic and PCB held to production quality, part assets under
 CC BY-SA 3.0. Four of the five are at v1.0.0. The GIGA Display Shield is at
